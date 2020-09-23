@@ -1,3 +1,3 @@
-# run app.rb to play!
+# run 'ruby app.rb' to play!
 
 Requirements: Ruby
