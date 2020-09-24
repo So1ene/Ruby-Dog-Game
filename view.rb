@@ -1,249 +1,173 @@
+# frozen_string_literal: true
+
+# View
 class View
-  def list(dogs)
-    puts "Your dogs:"
+  def getdogs(dogs)
     dogs.each_with_index do |dog, index|
-      sleeping = dog.sleeping? ? " (Sleeping)" : ""
-      puts ""
-      puts "#{index + 1}. #{dog.name}: #{dog.age} year(s) old, #{dog.gender.downcase}, #{dog.breed.downcase} breed, #{dog.size}cm, #{dog.color.downcase}#{sleeping}"
+      sleeping = dog.sleeping? ? ' (Sleeping)' : ''
+      puts "\n#{index + 1}. #{dog.name}: #{dog.age} year(s) old,
+      #{dog.gender.downcase}, #{dog.breed.downcase} breed, #{dog.size}cm,
+      #{dog.color.downcase}#{sleeping}"
     end
-    puts ""
   end
 
-  def info (dog)
-    puts "Name: #{dog.name}"
-    puts "Age: #{dog.age} year(s) old"
-    puts "Gender: #{dog.gender}"
-    puts "Breed: #{dog.breed}"
-    puts "Size: #{dog.size}cm"
-    puts "Color: #{dog.color}"
-    print "Status: "
+  def list(dogs)
+    puts 'Your dogs:'
+    getdogs(dogs)
+    puts ''
+  end
+
+  def dog
+    print `clear`
+    puts "\n                           _\n                        ,:'/   _..._
+                       // ( `\"\"-.._.'\n                       \\| /    6\___
+                       |     6      4\n                       |            /
+                       \_     '-.--'\n                       (_'---'`)
+                       / `'---`()\n    ,              .'`          |
+   )\\        _.-'               ;\n   / |   _ .'`   _              /
+  /` /  .'       '.          , |\n /  /   /           \\   ;   | |
+|  \\   |            |  .|   | |\n \\  `\"|            /.-'|   | |
+   '-..-\\      "
+  end
+
+  def info(dog)
+    puts "Name: #{dog.name}\nAge: #{dog.age} year(s) old\nGender: #{dog.gender}"
+    puts "Breed: #{dog.breed}\nSize: #{dog.size}cm\nColor: #{dog.color}"
+    print 'Status: '
     if dog.sleeping?
-      puts "Sleeping"
+      puts "Sleeping\n"
     else
-      puts "Awake"
+      puts "Awake\n"
     end
-    puts ""
   end
 
   def confirmation
     print `clear`
-    print "."
+    print '.'
     sleep(0.1)
-    print "."
+    print '.'
     sleep(0.1)
-    print "."
+    print '.'
     sleep(0.2)
-    puts "Success!"
+    puts 'Success!'
     sleep(1)
     print `clear`
   end
 
   def ask_for_index
-    puts ""
-    puts "Which dog? (Type its number from the list)"
-    puts ""
-    print "> "
+    puts "\nWhich dog? (Type its number from the list)\n"
+    print '> '
     (gets.chomp.to_i - 1)
   end
 
   def error
-    puts ""
-    puts "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv"
-    puts ""
-    puts "/!\\ ERROR > Unknown input, please try again! <"
-    puts ""
-    puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-    puts ""
+    puts "\nvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\n
+/!\\ ERROR > Unknown input, please try again! <\n
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"
   end
 
   def title
-    puts ""
-    puts "            --           "
-    puts "       POCKET DOGGOS"
-    puts "            --           "
-    puts ""
+    puts "\n            --\n       POCKET DOGGOS\n            --\n"
   end
 
   def will_not(dog, action)
-      puts ""
-      puts ""
-      puts "                            Z"
-      puts "              .--~~~___   z "
-      puts " :-....,-------`~~'._.' z"
-      puts "  `-,,,  ,_      ;'~U'"
-      puts "   _,-' ,'`-__; '--."
-      puts "  (_/'~~      ''''(;"
-      puts ""
-      puts ""
-      puts "#{dog} is asleep! He will not #{action}."
-      puts ""
+    puts "\n                            Z\n              .--~~~___   z
+ :-....,-------`~~'._.' z
+  `-,,,  ,_      ;'~U'
+   _,-' ,'`-__; '--.
+  (_/'~~      ''''(;\n\n#{dog} is asleep! He will not #{action}.\n"
   end
 
   def sitting(dog, gender)
-    puts ""
-    puts "            "
-    puts "     /^-^\\"
-    puts "    / ^ ^ \\"
-    puts "    V\\ Y /V"
-    puts "     / - \\"
-    puts "    /    |"
-    print "   V__) ||"
-    puts ""
-    puts "#{dog} sits! What a good #{gender}."
-      puts ""
+    puts "\n\n\n     /^-^\\\n    / ^ ^ \\\n    V\\ Y /V\n     / - \\
+    /    |\n   V__) ||\n\n#{dog} sits! What a good #{gender}.\n"
   end
 
   def speaking(dog)
-    puts ""
-    puts ""
-    puts "    |\\_/|                  "
-    puts "    | 0 0   Woof! "
-    puts "    |   <>              _  "
-    puts "    |  _/\\------____ ((| |))"
-    puts "    |               `--' |   "
-    puts "____|_       ___|   |___.' "
-    print "/_/_____/____/_______|"
-    puts ""
-    puts "#{dog} says 'Woof!'"
-    puts ""
+    puts "\n\n    |\\_/|
+    | 0 0   Woof!
+    |   <>              _
+    |  _/\\------____ ((| |))
+    |               `--' |
+____|_       ___|   |___.'
+/_/_____/____/_______|
+\n#{dog} says 'Woof!'\n"
   end
 
   def dreaming(dog, gender)
-    puts ""
-    puts "                            Z"
-    puts "              .--~~~___   z "
-    puts " :-....,-------`~~'._.' z"
-    puts "  `-,,,  ,_      ;'~U'"
-    puts "   _,-' ,'`-__; '--."
-    puts "  (_/'~~      ''''(;"
-    puts ""
-    puts ""
-    puts "You gently pet #{dog}, who is dreaming... "
-    puts "#{dog}'s tail wags sleepily. What a good #{gender}!"
-    puts ""
+    puts "\n                            Z\n              .--~~~___   z
+ :-....,-------`~~'._.' z\n  `-,,,  ,_      ;'~U'
+   _,-' ,'`-__; '--.\n  (_/'~~      ''''(;\n
+You gently pet #{dog}, who is dreaming...
+#{dog}'s tail wags sleepily. What a good #{gender}!\n"
   end
 
   def patting(dog, gender)
-    puts ""
-    puts "                                _"
-    puts "                             ,:'/   _..._"
-    puts "                            // ( `\"\"-.._.'"
-    puts "                            \\| /    ^\___"
-    puts "                            |     ^      4"
-    puts "                            |     .      /"
-    puts "                            \_     '-.--'"
-    puts "                            (_'---'`)"
-    puts "                            / `'---`()"
-    puts "         ,              .'`          |"
-    puts "     __  )\ --      _.-'              ;"
-    puts "  _ \\'-./ | --  .'`   _              /"
-    puts "    _\\\ /` /_ .'       '.          , |"
-    puts "   -- /  /   /           \\   ;   |  \\"
-    puts "     |  \\   |            |  .|   |   \\"
-    puts "      \\  `\"|            /.-' |   |\\   \\"
-    puts "        '-..-\      "
-    puts ""
-    puts "You pat #{dog}! #{dog}'s tail wags and wags!!!"
-    puts "What a good #{gender}!"
+    puts "\n                             _\n                          ,:'/   _.\
+.._\n                         // ( `\"\"-.._.'
+                         \\| /    ^\___\n                         |     ^      4
+                         |     .      /\n                         \_     '-.--'
+                         (_'---'`)\n                         / `'---`()
+      ,              .'`          |\n  __  )\ --      _.-'              ;
+ \\'-./ | --  .'`   _              /\n _\\\ /` /_ .'       '.          , |
+-- /  /   /           \\   ;   |  \\\n  |  \\   |            |  .|   |   \\
+   \\  `\"|            /.-' |   |\\   \\\n     '-..-\\\n
+You pat #{dog}! #{dog}'s tail wags and wags!!!\nWhat a good #{gender}!"
   end
 
   def sleep(dog)
-    puts ""
+    puts ''
     if dog.sleeping?
-      puts ""
-      puts "                            Z"
-      puts "              .--~~~___   z "
-      puts " :-....,-------`~~'._.' z"
-      puts "  `-,,,  ,_      ;'~U'"
-      puts "   _,-' ,'`-__; '--."
-      puts "  (_/'~~      ''''(;"
-      puts ""
-      puts "#{dog.name} is already sleeping!"
-    puts ""
+      puts "                            Z\n              .--~~~___   z
+ :-....,-------`~~'._.' z\n  `-,,,  ,_      ;'~U'
+   _,-' ,'`-__; '--.\n  (_/'~~      ''''(;\n
+#{dog.name} is already sleeping!\n"
     else
-      puts ""
-      puts "                            Z"
-      puts "              .--~~~___   z "
-      puts " :-....,-------`~~'._.' z"
-      puts "  `-,,,  ,_      ;'~U'"
-      puts "   _,-' ,'`-__; '--."
-      puts "  (_/'~~      ''''(;"
-      puts ""
-      puts "#{dog.name} is now asleep... Shh!"
-      puts ""
+      puts "                            Z\n              .--~~~___   z
+ :-....,-------`~~'._.' z\n  `-,,,  ,_      ;'~U'
+   _,-' ,'`-__; '--.\n  (_/'~~      ''''(;\n
+#{dog.name} is now asleep... Shh!\n"
     end
   end
 
   def grr(dog)
-    puts ""
-    puts ""
-    puts "                                  ."
-    puts "                              ))"
-    puts "        )\\\\                  //"
-    puts "       _``\\`,- '''' ''- ,,,/ /"
-    puts "  .---'a> , < ,<' << ,<, ' / \\"
-    puts "  `v^w   ' , << ,< ' <  <  / \\"
-    puts "   ````--' \\  ,,,---''/ <' //"
-    puts "            !! ;;    ( '  / \\"
-    puts "            !!</       \\ `\\ /"
-    puts "          <</          / /</"
-    puts "                      <</"
-    puts ""
-    puts "#{dog} protecc! #{dog} attacc!"
-    puts ""
+    puts "\n\n                                  .
+                              ))\n        )\\\\                  //
+       _``\\`,- '''' ''- ,,,/ /\n  .---'a> , < ,<' << ,<, ' / \\
+  `v^w   ' , << ,< ' <  <  / \\\n   ````--' \\  ,,,---''/ <' //
+            !! ;;    ( '  / \\\n            !!</       \\ `\\ /
+          <</          / /</\n                      <</
+\n#{dog} protecc! #{dog} attacc!\n"
+  end
+
+  def awake_ascii
+    "                           _\n                        ,:'/   _..._
+                       // ( `\"\"-.._.'\n                       \\| /    6\___
+                       |     6      4\n                       |            /
+                       \_     '-.--'\n                       (_'---'`)
+                       / `'---`()\n    ,              .'`          |
+   )\\        _.-'               ;\n   / |   _ .'`   _              /
+  /` /  .'       '.          , |\n /  /   /           \\   ;   | |
+|  \\   |            |  .|   | |\n \\  `\"|            /.-'|   | |
+   '-..-\\\n\n"
   end
 
   def wakeup(dog)
-    puts ""
-    unless dog.sleeping?
-      puts "                                _"
-      puts "                             ,:'/   _..._"
-      puts "                            // ( `\"\"-.._.'"
-      puts "                            \\| /    6\___"
-      puts "                            |     6      4"
-      puts "                            |            /"
-      puts "                            \_     '-.--'"
-      puts "                            (_'---'`)"
-      puts "                            / `'---`()"
-      puts "         ,              .'`          |"
-      puts "        )\\        _.-'               ;"
-      puts "        / |   _ .'`   _              /"
-      puts "       /` /  .'       '.          , |"
-      puts "      /  /   /           \\   ;   | |"
-      puts "     |  \\   |            |  .|   | |"
-      puts "      \\  `\"|            /.-'|   | |"
-      puts "        '-..-\\      "
-      puts ""
-      puts "#{dog.name} is already awake!"
+    puts ''
+    puts awake_ascii
+    if dog.sleeping?
+      puts "#{dog.name} just woke up!\n"
     else
-      puts "                                _"
-      puts "                             ,:'/   _..._"
-      puts "                            // ( `\"\"-.._.'"
-      puts "                            \\| /    6\___"
-      puts "                            |     6      4"
-      puts "                            |            /"
-      puts "                            \_     '-.--'"
-      puts "                            (_'---'`)"
-      puts "                            / `'---`()"
-      puts "         ,              .'`          |"
-      puts "        )\\        _.-'               ;"
-      puts "        / |   _ .'`   _              /"
-      puts "       /` /  .'       '.          , |"
-      puts "      /  /   /           \\   ;   | |"
-      puts "     |  \\   |            |  .|   | |"
-      puts "      \\  `\"|            /.-'|   | |"
-      puts "        '-..-\\      "
-      puts ""
-      puts "#{dog.name} just woke up!"
+      puts "#{dog.name} is already awake!\n"
     end
   end
 
   def ask_for(item)
-    puts ""
+    puts ''
     puts "What is the #{item}?"
-    print "> "
+    print '> '
     reply = gets.chomp
-    puts ""
+    puts ''
     reply
   end
 end

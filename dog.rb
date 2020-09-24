@@ -1,13 +1,18 @@
+# frozen_string_literal: true
+
+# Doggoooo
 class Dog
   attr_reader :color, :breed, :age, :name, :gender, :size
 
-  def initialize(name, age, breed, color, gender, size)
-    @name = name
-    @age = age
-    @breed = breed
-    @color = color
-    @gender = gender
-    @size = size
+  def initialize(hash = { name: unknown, age: unknown,
+                          breed: unknown, color: unknown,
+                          gender: unknown, size: unknown })
+    @name = hash[:name]
+    @age = hash[:age]
+    @breed = hash[:breed]
+    @color = hash[:color]
+    @gender = hash[:gender]
+    @size = hash[:size]
     @sleeping = false
   end
 
@@ -22,5 +27,4 @@ class Dog
   def wakeup!
     @sleeping = false
   end
-
 end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Router
 class Router
   def initialize(controller, view)
     @controller = controller
@@ -10,8 +13,8 @@ class Router
     while @running
       @view.title
       display_tasks
-      puts ""
-      print "> "
+      puts ''
+      print '> '
       action = gets.chomp.to_i
       print `clear`
       route_action(action)
@@ -36,13 +39,13 @@ class Router
   end
 
   def display_tasks
-    puts "  -----------------------"
-    puts "  What do you want to do?"
-    puts "  -----------------------"
-    puts ""
-    puts "  1 - List all your dogs"
-    puts "  2 - Adopt a new dog"
-    puts "  3 - Play with a dog"
-    puts "  4 - Exit"
+    puts '  -----------------------'
+    puts '  What do you want to do?'
+    puts '  -----------------------'
+    puts ''
+    puts '  1 - List all your dogs'
+    puts '  2 - Adopt a new dog'
+    puts '  3 - Play with a dog'
+    puts '  4 - Exit'
   end
 end
