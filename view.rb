@@ -33,11 +33,11 @@ class View
   def info(dog)
     puts "Name: #{dog.name}\nAge: #{dog.age} year(s) old\nGender: #{dog.gender}"
     puts "Breed: #{dog.breed}\nSize: #{dog.size}cm\nColor: #{dog.color}"
-    print 'Status: '
+    print 'Sleeping: '
     if dog.sleeping?
-      puts "Sleeping\n"
+      puts "True\n"
     else
-      puts "Awake\n"
+      puts "False\n"
     end
   end
 
