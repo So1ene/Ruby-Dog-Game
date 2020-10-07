@@ -4,4 +4,4 @@
 - Ruby
 - Command line
 
-*Type `ruby app.rb` to play!*
+**Type `ruby app.rb` to play!**
