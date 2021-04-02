@@ -9,14 +9,14 @@ class Router
   end
 
   def run
-    print `clear`
+    print clear
     while @running
       @view.title
       display_tasks
       puts ''
       print '> '
       action = gets.chomp.to_i
-      print `clear`
+      print clear
       route_action(action)
     end
   end
@@ -47,5 +47,16 @@ class Router
     puts '  2 - Adopt a new dog'
     puts '  3 - Play with a dog'
     puts '  4 - Exit'
+  end
+
+  def clear
+    if Gem.win_platform?
+      system 'cls'
+    else
+      system 'clear'
+    end
+    puts "-------------"
+    puts ""
+    puts ""
   end
 end

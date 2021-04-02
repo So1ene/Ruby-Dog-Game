@@ -18,7 +18,7 @@ class View
   end
 
   def dog
-    print `clear`
+    clear
     puts "\n                           _\n                        ,:'/   _..._
                        // ( `\"\"-.._.'\n                       \\| /    6\___
                        |     6      4\n                       |            /
@@ -42,7 +42,7 @@ class View
   end
 
   def confirmation
-    print `clear`
+    clear
     print '.'
     sleep(0.1)
     print '.'
@@ -51,7 +51,7 @@ class View
     sleep(0.2)
     puts 'Success!'
     sleep(1)
-    print `clear`
+    clear
   end
 
   def ask_for_index
@@ -169,5 +169,16 @@ You pat #{dog}! #{dog}'s tail wags and wags!!!\nWhat a good #{gender}!"
     reply = gets.chomp
     puts ''
     reply
+  end
+
+  def clear
+    if Gem.win_platform?
+      system 'cls'
+    else
+      system 'clear'
+    end
+    puts "-------------"
+    puts ""
+    puts ""
   end
 end

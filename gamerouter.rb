@@ -17,7 +17,7 @@ class Gamerouter
       display_games_part_2
       print "\n> "
       game = gets.chomp.to_i
-      print `clear`
+      clear
       play(game)
     end
   end
@@ -65,5 +65,16 @@ class Gamerouter
     puts '  6 - Wake up'
     puts '  7 - grr'
     puts '  8 - Back to menu'
+  end
+
+  def clear
+    if Gem.win_platform?
+      system 'cls'
+    else
+      system 'clear'
+    end
+    puts "-------------"
+    puts ""
+    puts ""
   end
 end
