@@ -73,8 +73,5 @@ class Gamerouter
     else
       system 'clear'
     end
-    puts "-------------"
-    puts ""
-    puts ""
   end
 end

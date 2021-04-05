@@ -177,8 +177,5 @@ You pat #{dog}! #{dog}'s tail wags and wags!!!\nWhat a good #{gender}!"
     else
       system 'clear'
     end
-    puts "-------------"
-    puts ""
-    puts ""
   end
 end

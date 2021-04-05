@@ -55,8 +55,5 @@ class Router
     else
       system 'clear'
     end
-    puts "-------------"
-    puts ""
-    puts ""
   end
 end
