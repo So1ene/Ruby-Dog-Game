@@ -9,14 +9,14 @@ class Router
   end
 
   def run
-    print clear
+    clear
     while @running
       @view.title
       display_tasks
       puts ''
       print '> '
       action = gets.chomp.to_i
-      print clear
+      clear
       route_action(action)
     end
   end
