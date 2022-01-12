@@ -7,7 +7,6 @@ require_relative 'dog'
 class Repository
   def initialize(csv_file)
     @csv_file = csv_file
-    @csv_options = { col_sep: ',', quote_char: '"' }
     @dogs = []
 
     CSV.foreach(@csv_file) do |row|
@@ -25,7 +24,7 @@ class Repository
 
   def adopt_dog(dog)
     @dogs << dog
-    CSV.open(@csv_file, 'ab', @csv_options) do |csv|
+    CSV.open(@csv_file, 'ab', col_sep: ',', quote_char: '"') do |csv|
       csv << [dog.name, dog.age, dog.breed, dog.color,
               dog.gender, dog.size, dog.sleeping?]
     end
@@ -36,7 +35,7 @@ class Repository
   end
 
   def save_file
-    CSV.open(@csv_file, 'wb', @csv_options) do |csv|
+    CSV.open(@csv_file, 'wb', col_sep: ',', quote_char: '"') do |csv|
       @dogs.each do |dog|
         csv << [dog.name, dog.age, dog.breed, dog.color,
                 dog.gender, dog.size, dog.sleeping?]
