@@ -12,32 +12,24 @@ class Controller
     @view = View.new
   end
 
+  # @controller.info(@dog)
   # @controller.list
   # @controller.adopt
   # @controller.play
-  # @controller.fast_forward
-  # @controller.info(@dog)
   # @controller.pet(@dog)
   # @controller.sit(@dog)
   # @controller.speak(@dog)
   # @controller.sleep(@dog)
   # @controller.wakeup(@dog)
   # @controller.grr(@dog)
+  # @controller.fast_forward(@dog) # to-do
+
+  def info(dog)
+    @view.info(dog)
+  end
 
   def list
     @view.list(@repo.all)
-  end
-
-  def fetch_color
-    @view.ask_for('color').capitalize
-  end
-
-  def fetch_gender
-    @view.ask_for('gender').capitalize
-  end
-
-  def fetch_size
-    @view.ask_for('size (in cm)').to_i
   end
 
   def adopt
@@ -63,17 +55,12 @@ class Controller
     gamerouter.run
   end
 
-  def info(dog)
-    @view.info(dog)
-  end
-
-  def get_gender(dog)
-    if dog.gender.downcase == 'female'
-      'girl'
-    elsif dog.gender.downcase == 'male'
-      'boy'
+  def pet(dog)
+    gender = get_gender(dog)
+    if dog.sleeping?
+      @view.dreaming(dog.name, gender)
     else
-      'dog'
+      @view.patting(dog.name, gender)
     end
   end
 
@@ -83,23 +70,6 @@ class Controller
       @view.will_not(dog.name, 'sit')
     else
       @view.sitting(dog.name, gender)
-    end
-  end
-
-  def grr(dog)
-    if dog.sleeping?
-      @view.will_not(dog.name, 'grr')
-    else
-      @view.grr(dog.name)
-    end
-  end
-
-  def pet(dog)
-    gender = get_gender(dog)
-    if dog.sleeping?
-      @view.dreaming(dog.name, gender)
-    else
-      @view.patting(dog.name, gender)
     end
   end
 
@@ -121,5 +91,37 @@ class Controller
     @view.wakeup(dog)
     dog.wakeup!
     @repo.save_file
+  end
+
+  def grr(dog)
+    if dog.sleeping?
+      @view.will_not(dog.name, 'grr')
+    else
+      @view.grr(dog.name)
+    end
+  end
+  
+  private
+
+  def get_gender(dog)
+    if dog.gender.downcase == 'female'
+      'girl'
+    elsif dog.gender.downcase == 'male'
+      'boy'
+    else
+      'dog'
+    end
+  end
+
+  def fetch_color
+    @view.ask_for('color').capitalize
+  end
+
+  def fetch_gender
+    @view.ask_for('gender').capitalize
+  end
+
+  def fetch_size
+    @view.ask_for('size (in cm)').to_i
   end
 end
